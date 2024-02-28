@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+    <head>
+        <title>Students</title>
+        <link rel='stylesheet' href="{% static 'searchstyle.css' %}">
+    </head>
+
+<body>
+    <div class='header'>
+        <div class='text-logo'>
+            <h1>Django</h1>
+            <i>search bar</i>
+        </div>
+        <div class='search-bar'>
+            <form action='/search/' method='get'>
+            <input type='search' name='name' id='name' placeholder='search student' class='search'>
+            <button type='submit' class='s-btn'>search</button>
+            </form>
+        </div>
+        <div class='navbar'>
+            <a href='' alt=''>Home</a>
+            <a href='' alt=''>Contact</a>
+            <a href='' alt=''>About</a>
+            <a href='' alt=''>Register</a>
+        </div>
+    </div>
+    <main>
+        
+    <div class='container'>
+        <h1>Total Student : {{total}}</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Course</th>
+            </tr>
+            <tr>
+                {% for i in student %}
+
+                  <td>{{i.name}}</td>
+                  <td>{{i.email}}</td>
+                  <td>{{i.contact}}</td>
+                  <td>{{i.course}}</td>
+            </tr>
+                {% empty %}
+                <div class='error'>
+                  <h1>Result Not Found</h1>
+                  <p>Not match any keyword to your result</p>
+                </div>
+                {% endfor %}
+        </table> 
+    </div>
+</main>
+</body>
+</html>
